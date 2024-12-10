@@ -163,8 +163,6 @@ func main() {
 			fmt.Printf("%s[2J", escape)   // clear screen
 			fmt.Printf("%s[0;0H", escape) // move to 0,0
 
-			numRunning := 0
-
 			for _, t := range pod.Spec.Tasks {
 				v, ok := statuses.Load(t.Name)
 				if !ok {
@@ -182,7 +180,6 @@ func main() {
 					icon = color.BlueString(blackSquare)
 				case "running":
 					icon = color.GreenString(blackSquare)
-					numRunning++
 				case "error":
 					icon = color.RedString(blackSquare)
 				}
